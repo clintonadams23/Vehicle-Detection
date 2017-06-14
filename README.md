@@ -33,8 +33,7 @@ The training data is a combination of the GTI vehicle image database, the KITTI 
 
 ![alt text][image1]
 
-
-Using the following parameters resulting in both the best accuracy of the trained model against the test set and the most accurate vehicle identifacation on the test images.
+Using the following parameters resulted in both the best accuracy of the trained model against the test set and the most accurate vehicle identifacation on the test images.
 
 color_space = 'YCrCb'
 orient = 9  
@@ -43,13 +42,6 @@ cell_per_block = 2
 hog_channel = "ALL" 
 spatial_size = (20, 20) 
 hist_bins = 16    
-spatial_feat = True 
-hist_feat = True 
-hog_feat = True 
-y_start_stop = [450, None] 
-ystart = 400
-ystop = 656
-scale = 1.5
 
 #### Classifier training.
 To further improve the performance of vehicle detection, YCrCb color features and spatial features were extracted (cell four). The training data was split into random training and test sets using scikit learn's 'train_test_split' and then normalized to zero mean and equal variance.
@@ -58,7 +50,7 @@ A linear support vector machines classifier (SVM) was trained using these featur
 
 ### Sliding Window Search
 
-The sliding window search is conducted in code cell 5. A window with a tunable scale moves across an image and each time the classifier runs.  The scale parameter was tweaked iteratively, and 1.8 was found to give the most accurate classifcations on test images.
+The sliding window search is conducted in code cell 5. A window with a tunable scale moves across an image and each time the classifier runs.  The scale parameter was tweaked iteratively, and 1.8 an overlap of 75% was found to make objects in the windows close to the scale of the training data and gives the most accurate classifcations on test images.  
 
 ![alt text][image3]
 
